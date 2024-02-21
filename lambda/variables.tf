@@ -14,4 +14,19 @@ variable "lambdas" {
     variables           = map(string)
     vpc_config          = map(any)
   }))
+  default = {
+    "lambda-buteco" = {
+      function_name  = "lambda-buteco"
+      runtime        = "nodejs20.x"
+      handler        = "index.handler"
+      architectures  = ["x86_64"]
+      tracing_config = "Active"
+      memory_size    = 256
+      timeout        = 10
+      s3_bucket      = "lambda-zw-prd"
+      s3_key         = "node-app-x-ray.zip"
+      variables      = { EXAMPLE_VAR = "example" }
+      vpc_config     = { security_groups = ["sg-06651f16640f5263c"], subnets = ["subnet-08ea38bbf8eae5bfb"] }
+    },
+  }
 }
