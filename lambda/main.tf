@@ -12,8 +12,8 @@ module "lambda" {
   timeout             = each.value.timeout
   s3_bucket           = each.value.s3_bucket
   s3_key              = each.value.s3_key
-  additional_policies = each.value.additional_policies != null ? each.value.additional_policies : []
+  additional_policies = (each.value.additional_policies)
   variables           = each.value.variables
   vpc_config          = each.value.vpc_config
-  
+
 }
