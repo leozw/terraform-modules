@@ -13,7 +13,11 @@ module "lambda" {
   s3_bucket           = each.value.s3_bucket
   s3_key              = each.value.s3_key
   additional_policies = try(each.value.additional_policies, [])
-  variables           = each.value.variables
-  vpc_config          = each.value.vpc_config
-
+  role                = try(each.value.role, null)
+  variables           = try(each.value.variables, {})
+  vpc_config          = try(each.value.vpc_config, null)
+  filename            = try(each.value.filename, null)
+  image_uri           = try(each.value.image_uri, null)
+  s3_object_version   = try(each.value.s3_object_version, null)
+  layers              = try(each.value.layers, [])
 }

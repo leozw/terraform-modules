@@ -10,8 +10,13 @@ variable "lambdas" {
     timeout             = number
     s3_bucket           = string
     s3_key              = string
-    additional_policies = optional(list(string))
-    variables           = map(string)
-    vpc_config          = map(any)
+    additional_policies = optional(list(string), [])
+    role                = optional(string)
+    variables           = optional(map(string), {})
+    vpc_config          = optional(map(any))
+    filename            = optional(string)
+    image_uri           = optional(string)
+    s3_object_version   = optional(string)
+    layers              = optional(list(string), [])
   }))
 }
