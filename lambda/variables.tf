@@ -23,6 +23,7 @@ variable "lambdas" {
       tracing_config = "Active"
       memory_size    = 256
       timeout        = 10
+      additional_policies = []
       s3_bucket      = "lambda-zw-prd"
       s3_key         = "node-app-x-ray.zip"
       variables      = { EXAMPLE_VAR = "example" }
